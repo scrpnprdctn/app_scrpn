@@ -16,10 +16,16 @@ class PostController extends Controller
     }
 
     // Render one of my post by slug
-    
+
     public function show($slug){
         return view('post', [
             'post' => Post::where('slug', $slug)->firstOrFail()
         ]);
+    }
+
+    // Create one of my beautiful post
+
+    public function create(){
+        return view('create');
     }
 }
