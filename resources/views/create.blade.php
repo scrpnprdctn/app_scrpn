@@ -17,6 +17,13 @@
                 </div>
 
                 <div class="field">
+                    <label class="label" for="slug">Slug</label>
+                    <div class="control">
+                    <input class="input" type="text" name="slug" id="slug" placeholder="title-of-my-post">
+                    </div>
+                </div>
+
+                <div class="field">
                     <label class="label" for="body">Content</label>
                     <div class="control">
                         <textarea class="textarea" name="body" id="body" placeholder="e.g. Hello world"></textarea>
