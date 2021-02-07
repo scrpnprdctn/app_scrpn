@@ -7,12 +7,16 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    // Render a list of a my post.
+
     public function index(){
         return view('welcome', [
             'post' => Post::get()
         ]);
     }
 
+    // Render one of my post by slug
+    
     public function show($slug){
         return view('post', [
             'post' => Post::where('slug', $slug)->firstOrFail()
