@@ -1,37 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+@extends('layout')
 
-    <style>
-        *{
-            width:100%;
-            font-family:Arial, Helvetica, sans-serif;
-            text-align: center;
-        }
-        main{
-            width:40%;
-        }
-        a{
-            text-decoration: none;
-            color:khaki;
-            font-weight: 600;
-        }
-    </style>
-</head>
-<body>
+@section('content')
 
-    <main>
-        @foreach ($post as $p)
-        <h2 style="margin-bottom:0px;"><a href="/post/{{ $p->slug }}">{{ $p->slug }}</a></h2>
-        <sub>#{{ $p->id}}</sub>
-        <hr>
-        <p>{{ $p->body }}</p>
-        @endforeach
-    </main>
-    
-</body>
-</html>
+<div class="catalogue">
+
+@foreach ($post as $p)
+
+<a href="/post/{{ $p->slug }}" class="catalogue-item">
+
+    <div>
+        <time datetime="2019-05-28 00:00:00 &#43;0000 UTC" class="catalogue-time">{{ $p->published_at }}</time>
+        <h1 class="catalogue-title">{{ $p->title }}</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            {{ $p->body }}
+        </p>
+    </div>
+</a>
+
+@endforeach
+
+@endsection
+
+

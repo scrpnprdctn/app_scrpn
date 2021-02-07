@@ -1,37 +1,21 @@
+@extends('layout')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+@section('content')
 
-    <style>
-        *{
-            width:100%;
-            font-family:Arial, Helvetica, sans-serif;
-            text-align: center;
-        }
-        main{
-            width:40%;
-        }
-        a{
-            text-decoration: none;
-            color:khaki;
-            font-weight: 600;
-        }
-    </style>
-</head>
-<body>
+<div class="post">
+    <div class="post-info">
+        <span>Written by</span>
+        Steve Francia
+        <br>
+        <span>on&nbsp;</span><time datetime="2019-05-28 00:00:00 &#43;0000 UTC">{{ $post->published_at }}</time>
+    </div>
 
-    <main>
-        <h2 style="margin-bottom:0px;"><a href="{{ $post->slug }}">{{ $post->slug }}</a></h2>
-        <sub>#{{ $post->id}}</sub>
-        <hr>
-        <p>{{ $post->body }}</p>
-        <a href="/post">Return</a>
-    </main>
-    
-</body>
-</html>
+    <h1 class="post-title">{{ $post->title }}</h1>
+
+    <div class="post-line"></div>
+
+    <p>{{ $post->body }}</p>
+
+    <a href="/post">Return</a>
+
+@endsection
