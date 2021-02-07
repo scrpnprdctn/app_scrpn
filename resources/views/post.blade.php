@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +26,11 @@
 <body>
 
     <main>
-        @foreach ($post as $p)
-        <h2 style="margin-bottom:0px;"><a href="/post/{{ $p->slug }}">{{ $p->slug }}</a></h2>
-        <sub>#{{ $p->id}}</sub>
+        <h2 style="margin-bottom:0px;"><a href="{{ $post->slug }}">{{ $post->slug }}</a></h2>
+        <sub>#{{ $post->id}}</sub>
         <hr>
-        <p>{{ $p->body }}</p>
-        @endforeach
+        <p>{{ $post->body }}</p>
+        <a href="/post">Return</a>
     </main>
     
 </body>
