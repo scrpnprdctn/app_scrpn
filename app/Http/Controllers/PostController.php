@@ -31,12 +31,16 @@ class PostController extends Controller
 
     public function store(){
 
-        $post = new Post();
+        request()->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'slug' => 'required'
+        ]);
 
+        $post = new Post();
         $post->title = request('title');
         $post->slug = request('slug');
         $post->body = request('body');
-
         $post->save();
 
         return redirect('/post');
@@ -50,6 +54,12 @@ class PostController extends Controller
 
     public function update($slug){
 
+        request()->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'slug' => 'required'
+        ]);
+        
         $post = Post::where('slug', $slug)->firstOrFail();
 
         $post->title = request('title');

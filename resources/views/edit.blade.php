@@ -10,27 +10,57 @@
             @csrf
             @method('PUT')
 
-                <div class="field">
-                    <label class="label" for="title">Title</label>
-                    <div class="control">
-                    <input class="input" type="text" name="title" id="title" value="{{ $post->title }}">
-                    </div>
-                    <p class="help">This is a help text</p>
-                </div>
+            <div class="field">
+                <label class="label" for="title">
+                    Title
+                    </label>
 
-                <div class="field">
-                    <label class="label" for="slug">Slug</label>
-                    <div class="control">
-                    <input class="input" type="text" name="slug" id="slug" value="{{ $post->slug }}">
-                    </div>
+                <div class="control">
+                    <input
+                        class="input @error('title') is-danger @enderror" 
+                        type="text" 
+                        name="title" 
+                        id="title" 
+                        placeholder="Title of my post"
+                        value="{{ $post->title }}">
                 </div>
+                <!-- Error @title p -->
+                @error('title')<p class="help has-text-danger">{{ $errors->first('title') }}</p>@enderror
+            </div>
 
-                <div class="field">
-                    <label class="label" for="body">Content</label>
-                    <div class="control">
-                        <textarea class="textarea" name="body" id="body">{{ $post->body }}</textarea>
-                    </div>
+            <div class="field">
+                <label class="label" for="slug">
+                    Slug
+                    </label>
+
+                <div class="control">
+                <input 
+                    class="input @error('slug') is-danger @enderror" 
+                    type="text" 
+                    name="slug" 
+                    id="slug" 
+                    placeholder="title-of-my-post"
+                    value="{{ $post->slug }}">
                 </div>
+                <!-- Error @slug p -->
+                @error('slug') <p class="help has-text-danger">{{ $errors->first('slug') }}</p> @enderror
+
+            </div>
+
+            <div class="field">
+                <label class="label" for="body">Content</label>
+                <div class="control">
+                    <textarea 
+                        class="textarea @error('body') is-danger @enderror" 
+                        name="body" 
+                        id="body" 
+                        placeholder="e.g. Hello world"
+                        >{{ $post->body }}
+                    </textarea>
+                </div>
+                <!-- Error @body p -->
+                @error('body') <p class="help has-text-danger">{{ $errors->first('body') }}</p> @enderror
+            </div>
 
                 <div class="field is-grouped">
                     <div class="control">
