@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function index(){
         return view('welcome', [
-            'post' => Post::get()
+            'post' => Post::orderBy('id', 'DESC')->get()
         ]);
     }
 
@@ -29,7 +29,16 @@ class PostController extends Controller
         return view('create');
     }
 
-    public function store(Request $request){
-        dd($request->request);
+    public function store(){
+
+        $post = new Post();
+
+        $post->title = request('title');
+        $post->slug = request('slug');
+        $post->body = request('body');
+
+        $post->save();
+
+        return redirect('/post');
     }
 }
