@@ -12,7 +12,9 @@
 
             <hr>
 
-            <a href="/post">Return</a>
+            <a class="button is-info is-small" href="{{ $post->slug }}/edit/">Edit</a>
+            <a class="button is-success is-small" href="/post">Return</a>
+
         </div>
     </div>
 </div>

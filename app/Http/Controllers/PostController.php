@@ -41,4 +41,23 @@ class PostController extends Controller
 
         return redirect('/post');
     }
+
+    public function edit($slug){
+
+        $post = Post::where('slug', $slug)->firstOrFail();
+        return view('edit', compact('post'));
+    }
+
+    public function update($slug){
+
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        $post->title = request('title');
+        $post->slug = request('slug');
+        $post->body = request('body');
+        $post->save();
+
+        return redirect('/post/'. $post->slug);
+
+    }
 }
