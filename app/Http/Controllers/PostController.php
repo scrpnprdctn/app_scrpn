@@ -43,7 +43,7 @@ class PostController extends Controller
 
         $post->update($this->validatePost());
 
-        return redirect('/post/'. $post->slug);
+        return redirect(route('post.show', $post));
     }
 
     protected function validatePost(){

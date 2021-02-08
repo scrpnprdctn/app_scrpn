@@ -16,7 +16,7 @@ use App\Http\Controllers\PostController;
 
 Route::get('/post', [PostController::class, 'index'])->name('Post');
 Route::get('/post/create', [PostController::class, 'create']);
-Route::get('/post/{post}', [PostController::class, 'show']);
+Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::post('/post/create', [PostController::class, 'store']);
 Route::get('/post/{post}/edit', [PostController::class, 'edit']);
 Route::put('/post/{post}', [PostController::class, 'update']);

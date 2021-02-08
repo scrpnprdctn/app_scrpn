@@ -7,7 +7,7 @@
 <div class="columns">
     <div class="column is-6 is-offset-3">
         <div class="box">
-            <h1 class="title"><a href="/post/{{ $p->slug }}">{{ $p->title }}</a></h1>
+            <h1 class="title"><a href="{{ route('post.show', $p) }}">{{ $p->title }}</a></h1>
             <p class="subtitle is-size-7">Published at {{ $p->created_at }}</h3>
         </div>
     </div>
