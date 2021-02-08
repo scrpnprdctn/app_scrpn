@@ -55,8 +55,7 @@
                         name="body" 
                         id="body" 
                         placeholder="e.g. Hello world"
-                        >{{ $post->body }}
-                    </textarea>
+                        >{{ $post->body }}</textarea>
                 </div>
                 <!-- Error @body p -->
                 @error('body') <p class="help has-text-danger">{{ $errors->first('body') }}</p> @enderror

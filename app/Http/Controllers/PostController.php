@@ -17,10 +17,9 @@ class PostController extends Controller
 
     // Render one of my post by slug
 
-    public function show($slug){
-        return view('post', [
-            'post' => Post::where('slug', $slug)->firstOrFail()
-        ]);
+    public function show(Post $post){
+
+        return view('post', ['post' => $post]);
     }
 
     // Create one of my beautiful post
@@ -31,43 +30,27 @@ class PostController extends Controller
 
     public function store(){
 
-        request()->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'slug' => 'required'
-        ]);
-
-        $post = new Post();
-        $post->title = request('title');
-        $post->slug = request('slug');
-        $post->body = request('body');
-        $post->save();
+        Post::create($this->validatePost());
 
         return redirect('/post');
     }
 
-    public function edit($slug){
-
-        $post = Post::where('slug', $slug)->firstOrFail();
-        return view('edit', compact('post'));
+    public function edit(Post $post){
+        return view('edit', ['post' => $post]);
     }
 
-    public function update($slug){
+    public function update(Post $post){
 
-        request()->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'slug' => 'required'
-        ]);
-        
-        $post = Post::where('slug', $slug)->firstOrFail();
-
-        $post->title = request('title');
-        $post->slug = request('slug');
-        $post->body = request('body');
-        $post->save();
+        $post->update($this->validatePost());
 
         return redirect('/post/'. $post->slug);
+    }
 
+    protected function validatePost(){
+        return request()->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'body' => 'required'
+        ]);
     }
 }

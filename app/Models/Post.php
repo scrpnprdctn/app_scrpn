@@ -10,11 +10,17 @@ class Post extends Model
 {
     use HasFactory;
 
-    // Format CreatedAtDate
+    protected $guarded = [];
 
+    // Format CreatedAtDate
     public function getCreatedAtAttribute($date)
     {
     return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y à H:i');
+    }
+
+    // Use slug for Post
+    public function getRouteKeyName(){
+        return 'slug';
     }
 
 }
